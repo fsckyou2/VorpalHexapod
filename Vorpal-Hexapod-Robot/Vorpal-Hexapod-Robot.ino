@@ -211,18 +211,18 @@ Adafruit_PWMServoDriver servoDriver = Adafruit_PWMServoDriver(SERVO_IIC_ADDR);
 #define NO_LEGS       0b0
 
 // individual leg bitmasks
-#define LEG0 0b1
-#define LEG1 0b10
-#define LEG2 0b100
-#define LEG3 0b1000
-#define LEG4 0b10000
+#define LEG0 0b000001
+#define LEG1 0b000010
+#define LEG2 0b000100
+#define LEG3 0b001000
+#define LEG4 0b010000
 #define LEG5 0b100000
 
-#define LEG0BIT  0b1
-#define LEG1BIT  0b10
-#define LEG2BIT  0b100
-#define LEG3BIT  0b1000
-#define LEG4BIT  0b10000
+#define LEG0BIT  0b000001
+#define LEG1BIT  0b000010
+#define LEG2BIT  0b000100
+#define LEG3BIT  0b001000
+#define LEG4BIT  0b010000
 #define LEG5BIT  0b100000
 
 #define ISFRONTLEG(LEG) (LEG==0||LEG==5)
@@ -1560,6 +1560,7 @@ void boogie_woogie(int legs_flat, int submode, int timingfactor) {
   }
 }
 
+// TODO: Replace this with C6 bluetooth stuff
 SoftwareSerial BlueTooth(3,2);  // Bluetooth pins: TX=3=Yellow wire,  RX=2=Green wire
 
 int ServosDetached = 0;
@@ -1612,7 +1613,9 @@ void setup() {
       ServoTrim[i] = TRIM_ZERO;   // this is the middle of the trim range and will result in no trim
     }
   }
-  
+
+
+  // TODO: This section assumes pin 13 is an LED. The C6 devkit has a neopixel on IO8
   // make a characteristic flashing pattern to indicate the robot code is loaded (as opposed to the gamepad)
   // There will be a brief flash after hitting the RESET button, then a long flash followed by a short flash.
   // The gamepaid is brief flash on reset, short flash, long flash.
@@ -1653,7 +1656,7 @@ void setup() {
                             // In this way the global default of 1 or 2 will reverse if the shunt
                             // is on ServoTypePin
   }
-                   
+
   // Chirp a number of times equal to FreqMult so we confirm what servo mode is in use
   for (int i = 0; i < FreqMult; i++) {
     beep(800, 50);
