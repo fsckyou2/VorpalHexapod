@@ -494,12 +494,14 @@ void pixelOn(uint32_t color, uint8_t val = HIGH) {
     pixels.setPixelColor(0, color);
     pixels.show();
   } else {
-    pixels.clear();
+    pixels.setPixelColor(0, pixels.Color(0,0,0));
+    pixels.show();
   }
 }
 
 void pixelOff() {
-  pixels.clear();
+    pixels.setPixelColor(0, pixels.Color(0,0,0));
+    pixels.show();
 }
 
 // this version of setHip doesn't do mirror images like raw, but it
