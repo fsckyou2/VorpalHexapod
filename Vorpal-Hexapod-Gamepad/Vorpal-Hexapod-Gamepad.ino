@@ -61,6 +61,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 **********************/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+
+ESP32-C6 connections
+
+                      J1 Header (Left Edge)                J3 Header (Right Edge)
+                    ____________________________________________________________
+                    | 1: 3V3                               1: GND               |
+                    | 2: RST                               2: TX (U0TXD)        |
+          Row 1     | 3: GPIO4                             3: RX (U0RXD)        |
+          Row 2     | 4: GPIO5                             4: GPIO15            | D_PAD Analog in
+          Row 3     | 5: GPIO6                             5: GPIO23 (SDIO_DA3) | SDIO_DA3
+          Row 4     | 6: GPIO7                             6: GPIO22 (SDIO_DA2) | SDIO_DA2
+                    | 7: **GPIO0** (Boot)                  7: GPIO21 (SDIO_DA1) | SDIO_DA1
+          Col 1     | 8: GPIO1                             8: GPIO20 (SDIO_DA0) | SDIO_DA0
+                    | 9: **GPIO8** (Boot)                  9: GPIO19 (SDIO_CLK) | SDIO_CLK
+          Col 3     | 10: GPIO10                          10: GPIO18 (SDIO_CMD) | SDIO_CMD
+          Col 4     | 11: GPIO11                          11: **GPIO9** (Boot)  |
+                    | 12: **GPIO2** (Boot)                12: GND               |
+          Col 2     | 13: GPIO3                           13: GPIO13 (USB_D+)   |
+                    | 14: 5V                              14: GPIO12 (USB_D-)   |
+                    | 15: GND                             15: GND               |
+                    | 16: NC                              16: NC                |
+                    |___________________________________________________________|
+
+
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int debugmode = 0;          // Set to 1 to get more debug messages. Warning: this may make Scratch unstable so don't leave it on.
 
